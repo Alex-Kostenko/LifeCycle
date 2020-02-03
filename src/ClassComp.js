@@ -1,7 +1,6 @@
 import React from 'react';
 import RenderUser from './user';
-import useUser from './hooks/useUser';
-import CustomHook from './hooks';
+import CustomHook from './FuncComp';
 
 
 class App extends React.Component {
@@ -11,6 +10,10 @@ class App extends React.Component {
     iteration: 0,
     isChildComponent: true,
   };
+
+  // constructor(
+
+  // )
 
   componentWillMount() {
 
@@ -40,6 +43,11 @@ class App extends React.Component {
     clearInterval(this.interval_2);
   }
 
+  componentDidMount() {
+    console.log('ComponentDidMount');
+  }
+
+
   shouldComponentUpdate( nextProps, nextState ) {
     if (this.state.isChildComponent === nextState.isChildComponent && this.state.user !== nextState.user) {
       return false
@@ -49,8 +57,6 @@ class App extends React.Component {
 
   render() {
     const { isChildComponent, iteration, user } = this.state;
-
-    // const {userHook, setUserHook} = useUser();
 
     return (
       <div>

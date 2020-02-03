@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import CustomHook from './hooks/useUser';
+import App from './ClassComp';
 
 import * as serviceWorker from './serviceWorker';
 
