@@ -7,8 +7,7 @@ import CustomHook from './hooks';
 class App extends React.Component {
 
   state = {
-    // lifeCycle: String,
-    // user: null,
+    user: {},
     iteration: 0,
     isChildComponent: true,
   };
@@ -19,13 +18,13 @@ class App extends React.Component {
       this.setState({
         user: this.state.user ? undefined : {name: 'userName'},
       });
-    }, 199000);
+    }, 1000);
 
     this.interval_2 = setInterval(() => {
       this.setState({
         iteration: ++this.state.iteration,
       });
-    }, 499000);
+    }, 4000);
   }
 
   handleClick1 = () => {
@@ -36,21 +35,17 @@ class App extends React.Component {
     console.log(this);
   }
 
-  // shouldComponentUpdate() {}
-
   componentWillUnmount() {
     clearInterval(this.interval_1);
     clearInterval(this.interval_2);
   }
 
   shouldComponentUpdate( nextProps, nextState ) {
-    console.log(nextProps, nextState);
     if (this.state.isChildComponent === nextState.isChildComponent && this.state.user !== nextState.user) {
       return false
     }
     return true
   }
-  
 
   render() {
     const { isChildComponent, iteration, user } = this.state;
